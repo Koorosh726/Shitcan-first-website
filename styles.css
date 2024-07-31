@@ -73,7 +73,16 @@ main {
 .logo {
     max-width: 100%; /* Ensure the logo fits within the container */
     height: auto; /* Maintain aspect ratio */
-    animation: fading 6s infinite; /* Apply fading animation */
+    animation: slideDown 2s ease-out forwards, fading 6s infinite; /* Slide down and continuous fading animation */
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
 }
 
 @keyframes fading {
@@ -82,6 +91,62 @@ main {
     }
     35% {
         opacity: 0.5;
+    }
+}
+
+.half-diamond {
+    position: absolute;
+    width: 50vw;
+    height: 100vh;
+    background-color: #ff5757; /* Bright red color */
+    clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+    z-index: 0; /* Behind the logo */
+}
+
+.half-diamond.left {
+    left: -50vw;
+    animation: slideInLeft 2s ease-out forwards; /* Slide in from left */
+}
+
+.half-diamond.right {
+    right: -50vw;
+    animation: slideInRight 2s ease-out forwards; /* Slide in from right */
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.welcome-text {
+    position: absolute;
+    bottom: -50px;
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+    color: #ff5757; /* Bright red text */
+    animation: slideUp 2s ease-out forwards; /* Slide up animation */
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
     }
 }
 
@@ -200,4 +265,3 @@ form button {
 form button:hover {
     background-color: #e94e4e; /* Slightly darker red on hover */
 }
-
